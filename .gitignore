@@ -1,0 +1,5 @@
+.vscode/
+env
+*.apkg
+.DS_Store
+*.pyc
