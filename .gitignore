@@ -3,3 +3,4 @@ env
 *.apkg
 .DS_Store
 *.pyc
+images/*.jpg
