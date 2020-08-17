@@ -15,7 +15,9 @@ def main():
     actor_appearances = {actor:flat_actors.count(actor) for actor in [hashabledict(a) for a in flat_actors]}
     filtered_actors = [actor for (actor,appearances) in actor_appearances.items() if appearances >= MIN_MOVIE_APPEARANCE]
     print(f"Unique actors with {MIN_MOVIE_APPEARANCE} or more movie appearances: {len(filtered_actors)}")
-    actors_with_image_urls = [{"actor": a['actor'], "url": get_image_url_from_actor(a['url'])} for a in filtered_actors]
+    actors_to_use = list(set(filtered_actors+[hashabledict(a) for a in get_best_actors()+get_best_actresses()]))
+    print(f"Actors after adding best actor/actress: {len(actors_to_use)}")
+    actors_with_image_urls = [{"actor": a['actor'], "url": get_image_url_from_actor(a['url'])} for a in actors_to_use]
     for actor in actors_with_image_urls:
         if (actor['url']):
             download_image_for_actor(actor)

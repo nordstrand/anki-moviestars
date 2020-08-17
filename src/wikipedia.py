@@ -48,4 +48,21 @@ def get_stars_from_movie(movie_url):
     actors = infobox.find(text='Starring').parent.next_sibling.find_all('a')
     return [{'actor': a.text, 'url': f"https://en.wikipedia.org/{a['href']}"} for a in actors]
 
+def get_best_actors():
+    f = urllib.request.urlopen("https://en.wikipedia.org/wiki/Academy_Award_for_Best_Actor")
+    s = f.read().decode('utf-8')
+    soup = BeautifulSoup(s, 'html.parser')
+    a = soup.find('table', {'class': 'sortable'}).find_all("img")
+    return [{'actor': img.parent.find('a').text,
+             'url':   f"https://en.wikipedia.org/{img.parent.find('a')['href']}"}
+             for img in a][-30:]
+
+def get_best_actresses():
+    f = urllib.request.urlopen("https://en.wikipedia.org/wiki/Academy_Award_for_Best_Actress")
+    s = f.read().decode('utf-8')
+    soup = BeautifulSoup(s, 'html.parser')
+    a = soup.find('table', {'class': 'sortable'}).find_all("img")
+    return [{'actor': img.parent.find('a').text,
+             'url':   f"https://en.wikipedia.org/{img.parent.find('a')['href']}"}
+             for img in a][-30:]
 
