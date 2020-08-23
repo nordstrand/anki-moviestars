@@ -38,6 +38,7 @@ jobs:
       with:
         tag_name: ${{ github.run_number }}
         release_name: Release ${{ github.run_number }}
+        body_path: release_notes.md
         draft: false
         prerelease: false
     - name: Upload Release Asset

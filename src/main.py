@@ -59,5 +59,10 @@ def create_deck(actors):
     print(package.media_files)
     package.write_to_file(ANKI_PACKAGE_PATH)
     print(f"Anki output file {ANKI_PACKAGE_PATH} written.")
+    with open("release_notes.md", "w") as text_file:
+      newLine="\n"
+      print(f"""### Movie stars in this release:
+{ newLine.join([f" * {actor}" for actor in sorted(list(map(lambda x: x['actor'], actors)))]) }
+    """, file=text_file)
 
 main()
