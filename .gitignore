@@ -6,3 +6,4 @@ env
 images/*.jpg
 bin/
 lib/
+release_notes.md
