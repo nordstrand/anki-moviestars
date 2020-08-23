@@ -3,6 +3,7 @@ import genanki
 from pathlib import Path
 
 from wikipedia import *
+from image import save_image_with_attribution
 
 MIN_MOVIE_APPEARANCE=3
 
@@ -20,7 +21,7 @@ def main():
     actors_with_image_urls = [{"actor": a['actor'], "url": get_image_url_from_actor(a['url'])} for a in actors_to_use]
     for actor in actors_with_image_urls:
         if (actor['url']):
-            download_image_for_actor(actor)
+            save_image_with_attribution(actor)
         else:
             print(f"Skipping image for {actor['actor']}")
     

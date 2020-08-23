@@ -2,14 +2,6 @@ import urllib.request
 import urllib.parse
 from bs4 import BeautifulSoup
 
-def download_image_for_actor(actor):
-    image_url=actor["url"]
-    print(f"{actor['actor']}: {image_url}")
-    resource = urllib.request.urlopen(image_url)
-    output = open(f"images/{actor['actor']}.jpg","wb")
-    output.write(resource.read())
-    output.close()
-
 class hashabledict(dict):
     def __hash__(self):
         return hash(tuple(sorted(self.items())))

@@ -1,7 +1,14 @@
 beautifulsoup4==4.9.1
 cached-property==1.5.1
+certifi==2020.6.20
+chardet==3.0.4
 frozendict==1.2
 genanki==0.8.0
+idna==2.10
 pystache==0.5.4
 PyYAML==5.3.1
+requests==2.24.0
+rope==0.17.0
 soupsieve==2.0.1
+urllib3==1.25.10
+Wand==0.6.2
